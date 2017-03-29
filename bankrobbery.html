@@ -1,0 +1,104 @@
+<head>
+    <!-- <meta charset="UTF-8"> -->
+    <title>Bank robbery</title>
+</head>
+<body>
+  <!-- {{> routerLayout}} -->
+</body>
+
+<template name="routerLayout">
+  <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">BankRobbery</a>
+          <div class="login">
+            <span>{{> loginButtons}}</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="row main">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        {{#if currentUser}}
+          {{> yield 'main'}}
+        {{else}}
+          {{> yield 'prologue'}}
+        {{/if}}
+        <span class="error"></span>
+      </div>
+    </div>
+</div>
+</template>
+
+<template name="prologue">
+  <div class="prologue">
+      <div class="prologDiv">
+          <p class="prologText">Привет, это пишу тебе я, Джон. Мы сидели вместе в 90ых, помнишь? Есть такая маза Джек,
+              дело по-крупному. Я собрал отличную команду, и, помня твои навыки сетевой работы, хочу пригласить тебя тоже.
+              Мы устроим мега заворушку в этом городе! Наша цель - сейф на 12ом этаже банка, в котором хранится
+              1млрд баксов наличкой. Наличкой, Джек, наличкой! Если ты в теме - то логинся быстрее!
+          </p>
+          <img src={{imgSrc}} class="taskImg"/>
+      </div><br/>
+      <!-- <button id="ImIn" class='js-Im-in btn btn-success'>Я в деле!</button> -->
+  </div>
+</template>
+
+<template name="mainTask">
+  <div class="tasks">
+      <h1 class="questaton">QUESTATON</h1>
+      <p id="motto">По-настоящему мозги включаются только тогда, когда помощи ждать неоткуда</p>
+      <br/>
+      <div class="taskDiv">
+          <p class="taskText"> {{{taskText}}} </p>
+          <img src={{imgSrc}} id="taskImg" class="taskImg"/>
+      </div>
+      <br/>
+      <p class="error textCenter"></p>
+      <br/>
+      {{#unless endBool}}
+        <p class="textCenter"><b>Enter the Level Key: </b></p>
+        <input type="text" class="submit" id="keyLevel">
+        <br/>
+        <button id="submitBtn" class="js-submit btn btn-success submit">Submit!</button>
+        {{else}}
+          <p>Спасибо тебе, http-гуру, что принял участие в этом квесте. Надеемся тебе понравилось и мы старались не зря.<br>
+          Если тебе это приключение принесло удовольствие, новые знания и желание самому сделать что-то подобное (но, конечно, получше) - значит мы добились чего хотели. <br>
+          Для тебя старались Кирилл Насардинов и Женя Татарин.<br>
+          Отдельное спасибо за идеи в составлении сценария Жене Деревянко</p>
+      {{/unless}}
+      <br/><br/><br/>
+  </div>
+</template>
+
+<template name='help'>
+  <div class="help">
+    <button>Беру подсказку</button>
+    <div name='hint1'>
+      HINT
+      <button> подсказку</button> 
+    </div>
+    <div name='help2'>
+    </div>
+    <div name='help2'>
+    </div>
+</div>
+</template>
+
+<template name='statistic'>
+  <table class="stat">
+    <tr>
+      <th>Level</th>
+      <th>User Name</th>
+      <th>Date Time</th>
+    </tr>
+    {{#each statRow}}
+      <tr>
+        <td>{{userLvl}}</td>
+        <td>{{userName}}</td>
+        <td>{{time}}</td>
+      </tr>
+    {{/each}}
+</table>
+</template>
